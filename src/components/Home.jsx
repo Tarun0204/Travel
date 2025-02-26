@@ -31,7 +31,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div style={{ width: "100%", overflow: "hidden" }}>
       <Navbar />
       <div className="home-container">
         <div className="slider-container">
@@ -57,7 +57,7 @@ const Home = () => {
         <Faq />
         <Footer />
       </div>
-    </>
+    </div>
   );
 };
 
