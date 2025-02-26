@@ -11,7 +11,7 @@ const About = () => {
   }, []);
 
   return (
-    <>
+    <div style={{ width: "100%", overflow: "hidden" }}>
       <Navbar />
       <div className="about-container">
         <div className="top-container" data-aos="fade-up">
@@ -116,7 +116,7 @@ const About = () => {
       <div style={{ width: "100%", overflow: "hidden" }}>
         <Footer />
       </div>
-    </>
+    </div>
   );
 };
 
