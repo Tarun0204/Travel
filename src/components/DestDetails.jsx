@@ -23,7 +23,7 @@ const DestDetails = () => {
   }
 
   return (
-    <>
+    <div style={{ width: "100%", overflow: "hidden" }}>
       <Navbar />
       <div className="dest-container">
         <h1 className="dest-title" data-aos="fade-down">
@@ -164,7 +164,7 @@ const DestDetails = () => {
         )}
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
