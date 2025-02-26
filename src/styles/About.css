@@ -1,0 +1,44 @@
+.about-container {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  background-color: #fff;
+  padding: 50px 20px;
+}
+
+.top-container,
+.bottom-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.abt-heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: goldenrod;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.abt-para {
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: justify;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 30px 15px;
+  }
+
+  .abt-heading {
+    font-size: 24px;
+  }
+
+  .abt-para {
+    font-size: 14px;
+  }
+}
