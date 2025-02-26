@@ -1,0 +1,110 @@
+.dest-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.dest-title {
+  text-align: center;
+  color: #2c3e50;
+}
+
+.dest-description {
+  color: #555;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.dest-section {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.dest-section:hover {
+  transform: scale(1.02);
+}
+
+.dest-heading {
+  color: #34495e;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.dest-card {
+  background: #fff;
+  padding: 15px;
+  margin: 10px 0;
+  border-left: 4px solid #3498db;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dest-card-title {
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.dest-card-text {
+  color: #555;
+  line-height: 1.6;
+}
+
+.dest-list {
+  padding-left: 20px;
+}
+
+.dest-list-item {
+  color: #555;
+}
+
+.dest-category {
+  margin-top: 20px;
+}
+
+.dest-category-title {
+  font-size: 18px;
+  color: #1a5276;
+  margin-bottom: 10px;
+}
+
+.dest-not-found {
+  text-align: center;
+  color: red;
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .dest-container {
+    padding: 10px;
+  }
+
+  .dest-title {
+    font-size: 24px;
+  }
+
+  .dest-heading {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dest-title {
+    font-size: 20px;
+  }
+
+  .dest-heading {
+    font-size: 18px;
+  }
+
+  .dest-section {
+    padding: 10px;
+  }
+}

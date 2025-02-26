@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import gallery1 from "../assets/gallery1.webp";
 import gallery2 from "../assets/gallery2.webp";
 import gallery3 from "../assets/gallery3.avif";
-import d1 from "../assets/d1.jpg"
+import d1 from "../assets/d1.jpg";
+import d2 from "../assets/d2.webp";
+import d3 from "../assets/d3.webp";
 import "../styles/Destinations.css";
 
 const cityPackages = [
@@ -38,10 +43,30 @@ const cityPackages = [
     buttonText: "Experience the Serengeti in Tanzania",
     imgUrl: gallery3,
   },
+  {
+    id: 5,
+    name: "Kerala",
+    description:
+      "Known for its serene backwaters, lush landscapes, and beautiful beaches, Kerala offers a peaceful escape. Experience houseboat rides in Alleppey, the misty tea gardens of Munnar, and the cultural richness of its temples and festivals. The state's vibrant wildlife sanctuaries and Ayurvedic retreats also provide a rejuvenating experience for nature and wellness enthusiasts.",
+    buttonText: "Explore Kerala's Beauty",
+    imgUrl: d2,
+  },
+  {
+    id: 6,
+    name: "Iceland",
+    description:
+      "Iceland, the land of fire and ice, offers some of the most dramatic landscapes on Earth. From active volcanoes and geysers to vast glaciers and stunning waterfalls, Iceland's natural beauty is unmatched. Visitors can explore the Golden Circle, witness the northern lights, or relax in the geothermal Blue Lagoon. The island also boasts vibrant culture and history, with a strong connection to Norse mythology. It's a perfect destination for adventure seekers and nature lovers alike.",
+    buttonText: "Visit Iceland",
+    imgUrl: d3,
+  },
 ];
 
 const Destinations = () => {
   const [expanded, setExpanded] = useState({});
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   const toggleReadMore = (id) => {
     setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -54,22 +79,41 @@ const Destinations = () => {
           <span>D</span>estinations
         </h1>
         <div className="grid">
-          {cityPackages.map((city) => (
-            <div className="card" key={city.id}>
+          {cityPackages.map((city, index) => (
+            <div
+              className="des-card"
+              key={city.id}
+              data-aos={index % 2 === 0 ? "zoom-in" : "zoom-out"}
+            >
               <img src={city.imgUrl} alt={city.name} className="city-image" />
               <div className="card-body">
                 <h3>{city.name}</h3>
                 <div className="desc-content">
-                <p className={`description ${expanded[city.id] ? "expanded" : ""}`}>
-                  {expanded[city.id]
-                    ? city.description
-                    : `${city.description.substring(0, 120)}`}
-                     <button onClick={() => toggleReadMore(city.id)} className="read-more-btn">
-                  {expanded[city.id] ? "Read Less" : "Read More"}
-                </button>
-                </p>
+                  <p
+                    className={`description ${
+                      expanded[city.id] ? "expanded" : ""
+                    }`}
+                  >
+                    {expanded[city.id]
+                      ? city.description
+                      : `${city.description.substring(0, 120)}...`}
+                    <button
+                      onClick={() => toggleReadMore(city.id)}
+                      className="read-more-btn"
+                    >
+                      {expanded[city.id] ? "Read Less" : "Read More"}
+                    </button>
+                  </p>
                 </div>
-                <button className="book-btn">{city.buttonText}</button>
+                <Link
+                  to={
+                    city.id === 1
+                      ? "/maasai-mara"
+                      : `/${city.name.toLowerCase()}`
+                  }
+                >
+                  <button className="book-btn">{city.buttonText}</button>
+                </Link>
               </div>
             </div>
           ))}
