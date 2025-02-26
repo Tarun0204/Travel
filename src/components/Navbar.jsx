@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -6,8 +7,25 @@ import logo from "../assets/logo.webp";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
-
   const toggleModal = () => setShowModal(!showModal);
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("service_h9gtv6f", "template_76gykje", form.current, {
+        publicKey: "kIP0Z0pMM5B8c90GE",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
+  };
 
   return (
     <>
@@ -134,7 +152,7 @@ const Navbar = () => {
                 ></button>
               </div>
               <div className="modal-body">
-                <form>
+                <form ref={form} onSubmit={sendEmail}>
                   <div className="mb-3">
                     <label htmlFor="name" className="form-label">
                       Name
@@ -144,6 +162,7 @@ const Navbar = () => {
                       className="form-control"
                       id="name"
                       placeholder="Enter your name"
+                      name="user_name"
                     />
                   </div>
                   <div className="mb-3">
@@ -155,13 +174,18 @@ const Navbar = () => {
                       className="form-control"
                       id="email"
                       placeholder="Enter your email"
+                      name="user_email"
                     />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="destination" className="form-label">
                       Destination
                     </label>
-                    <select className="form-select" id="destination">
+                    <select
+                      className="form-select"
+                      id="destination"
+                      name="user_destination"
+                    >
                       <option value="maasai-mara">Maasai Mara</option>
                       <option value="kenya">Kenya</option>
                       <option value="vietnam">Vietnam</option>
@@ -178,6 +202,7 @@ const Navbar = () => {
                       type="date"
                       className="form-control"
                       id="startDate"
+                      name="user_startDate"
                     />
                   </div>
                   <div className="mb-3">
@@ -188,21 +213,22 @@ const Navbar = () => {
                       type="date"
                       className="form-control"
                       id="endDate"
+                      name="user_endDate"
                     />
                   </div>
+                  <div className="modal-footer">
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={toggleModal}
+                    >
+                      Close
+                    </button>
+                    <button type="submit" className="btn btn-primary">
+                      Submit
+                    </button>
+                  </div>
                 </form>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={toggleModal}
-                >
-                  Close
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Submit
-                </button>
               </div>
             </div>
           </div>
