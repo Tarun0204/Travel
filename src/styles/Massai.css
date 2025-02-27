@@ -104,7 +104,6 @@
     margin-bottom: 10px;
   }
   
-  /* Media Queries */
   @media (max-width: 768px) {
     .maasai-container {
       padding: 30px 15px;
@@ -190,13 +189,13 @@
   
   @media (max-width: 768px) {
     .includes {
-      flex-direction: column; /* Stack the sections vertically */
+      flex-direction: column; 
       align-items: center;
     }
   
     .inclusions-container,
     .exclusions-container {
-      width: 100%; /* Ensure both containers take full width on mobile */
+      width: 100%;
       margin-bottom: 30px;
     }
   
